@@ -23,6 +23,7 @@
     buffer_index_type = 4
     enable_tabline_filetype_icon = true
     enable_statusline_mode = false
+    relativenumber=false
 
 # Enable autocomplete layer
 [[layers]]
@@ -32,5 +33,17 @@ auto_completion_tab_key_behavior = "smart"
 
 [[layers]]
 name = 'shell'
-default_position = 'top'
+default_position = 'bottom'
 default_height = 30
+
+[[layers]]
+name = "lang#c"
+
+[[layers]]
+name = "lang#python"
+
+[[custom_plugins]]
+repo = 'github/copilot.vim'
+merged = false
+# :Copilot setup
+# :help copilot
