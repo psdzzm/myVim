@@ -24,6 +24,13 @@ SpaceVim is a vim configuration inspired by [spacemacs](https://github.com/syl20
 
 The latest release [v2.0.0](https://spacevim.org/SpaceVim-release-v2.0.0/) was released at 2022-07-02, check out [following-HEAD](https://github.com/SpaceVim/SpaceVim/wiki/Following-HEAD) page for what happened since last release.
 
+## Installation
+```bash
+sudo add-apt-repository ppa:neovim-ppa/stable -y
+sudo apt install neovim
+curl -sLf https://spacevim.org/install.sh | sed "s/SpaceVim\/SpaceVim.git/psdzzm\/myVim.git --depth=1/g" | bash && ln -s "$HOME/.SpaceVim/SpaceVim.d" "$HOME/.SpaceVim.d"
+```
+
 ## Support SpaceVim
 
 This project wouldn't exist without all the people who [contributed](CONTRIBUTING.md),
