@@ -1,6 +1,6 @@
 "=============================================================================
 " manager.vim --- Git branch manager
-" Copyright (c) 2016-2022 Wang Shidong & Contributors
+" Copyright (c) 2016-2023 Wang Shidong & Contributors
 " Author: Wang Shidong < wsdjeg@outlook.com >
 " URL: https://spacevim.org
 " License: GPLv3
@@ -57,7 +57,7 @@ endfunction
 function! s:update() abort
   let s:branchs = []
   let cmd = ['git', 'branch', '--all']
-  call git#logger#info('git-branch cmd:' . string(cmd))
+  call git#logger#debug('git-branch cmd:' . string(cmd))
   call s:JOB.start(cmd,
         \ {
         \ 'on_stderr' : function('s:on_stderr'),
@@ -108,7 +108,7 @@ function! s:on_stderr(id, data, event) abort
   endfor
 endfunction
 function! s:on_exit(id, data, event) abort
-  call git#logger#info('git-branch exit data:' . string(a:data))
+  call git#logger#debug('git-branch exit data:' . string(a:data))
   if a:data ==# 0
     call s:update_buffer_context()
   endif

@@ -220,7 +220,7 @@ EOT
             cat <<EOT > plugin/todo.vim
 "=============================================================================
 " todo.vim --- todo manager for SpaceVim
-" Copyright (c) 2016-2022 Wang Shidong & Contributors
+" Copyright (c) 2016-2023 Wang Shidong & Contributors
 " Author: Wang Shidong < wsdjeg@outlook.com >
 " URL: https://spacevim.org
 " License: GPLv3
@@ -269,6 +269,83 @@ EOT
             rm -rf detach/$1
             exit 0
             ;;
+        JavaUnit.vim)
+            git clone https://github.com/wsdjeg/JavaUnit.vim.git detach/$1
+            cd detach/$1
+            # _detact LICENSE
+            # _checkdir autoload/SpaceVim/api
+            # _detact autoload/SpaceVim/api.vim
+            # _detact autoload/SpaceVim/api/job.vim
+            # _checkdir autoload/chat/
+            _detact_bundle JavaUnit.vim README.md
+            git add .
+            git config user.email "wsdjeg@qq.com"
+            git config user.name  "SpaceVimBot"
+            git commit -m "Auto Update based on https://github.com/SpaceVim/SpaceVim/commit/${GITHUB_SHA}"
+            git remote add wsdjeg_javaunit_vim https://SpaceVimBot:${BOTSECRET}@github.com/wsdjeg/JavaUnit.vim.git
+            git push wsdjeg_javaunit_vim master 
+            cd -
+            rm -rf detach/$1
+            exit 0
+            ;;
+        git.vim)
+            git clone https://github.com/wsdjeg/git.vim.git detach/$1
+            cd detach/$1
+            _checkdir autoload/SpaceVim/api
+            _detact autoload/SpaceVim/api.vim
+            _detact autoload/SpaceVim/api/job.vim
+            _detact_bundle git.vim LICENSE
+            _detact_bundle git.vim LICENSE
+            _detact_bundle git.vim README.md
+            _detact_bundle git.vim README.md
+            _detact_bundle git.vim addon-info.json
+            _checkdir autoload/git/branch
+            _detact_bundle git.vim autoload/git.vim
+            _detact_bundle git.vim autoload/git/add.vim
+            _detact_bundle git.vim autoload/git/blame.vim
+            _detact_bundle git.vim autoload/git/branch.vim
+            _detact_bundle git.vim autoload/git/branch/manager.vim
+            _detact_bundle git.vim autoload/git/checkout.vim
+            _detact_bundle git.vim autoload/git/cherry_pick.vim
+            _detact_bundle git.vim autoload/git/clean.vim
+            _detact_bundle git.vim autoload/git/commit.vim
+            _detact_bundle git.vim autoload/git/config.vim
+            _detact_bundle git.vim autoload/git/diff.vim
+            _detact_bundle git.vim autoload/git/fetch.vim
+            _detact_bundle git.vim autoload/git/log.vim
+            _detact_bundle git.vim autoload/git/logger.vim
+            _detact_bundle git.vim autoload/git/merge.vim
+            _detact_bundle git.vim autoload/git/mv.vim
+            _detact_bundle git.vim autoload/git/pull.vim
+            _detact_bundle git.vim autoload/git/push.vim
+            _detact_bundle git.vim autoload/git/rebase.vim
+            _detact_bundle git.vim autoload/git/reflog.vim
+            _detact_bundle git.vim autoload/git/remote.vim
+            _detact_bundle git.vim autoload/git/reset.vim
+            _detact_bundle git.vim autoload/git/rm.vim
+            _detact_bundle git.vim autoload/git/stash.vim
+            _detact_bundle git.vim autoload/git/status.vim
+            _checkdir doc
+            _detact_bundle git.vim doc/git.txt
+            _checkdir plugin
+            _detact_bundle git.vim plugin/git.vim
+            _checkdir syntax
+            _detact_bundle git.vim syntax/git-blame.vim
+            _detact_bundle git.vim syntax/git-commit.vim
+            _detact_bundle git.vim syntax/git-config.vim
+            _detact_bundle git.vim syntax/git-log.vim
+            _detact_bundle git.vim syntax/git-rebase.vim
+            _detact_bundle git.vim syntax/git-reflog.vim
+            git add .
+            git config user.email "wsdjeg@qq.com"
+            git config user.name  "SpaceVimBot"
+            git commit -m "Auto Update based on https://github.com/SpaceVim/SpaceVim/commit/${GITHUB_SHA}"
+            git remote add wsdjeg_git_vim https://SpaceVimBot:${BOTSECRET}@github.com/wsdjeg/git.vim.git
+            git push wsdjeg_git_vim master 
+            cd -
+            rm -rf detach/$1
+            exit 0
+            ;;
         vim-cheat)
             git clone https://github.com/wsdjeg/vim-cheat.git detach/$1
             cd detach/$1
@@ -286,8 +363,59 @@ EOT
             git config user.email "wsdjeg@qq.com"
             git config user.name  "SpaceVimBot"
             git commit -m "Auto Update based on https://github.com/SpaceVim/SpaceVim/commit/${GITHUB_SHA}"
-            git remote add wsdjeg_vim_chat https://SpaceVimBot:${BOTSECRET}@github.com/wsdjeg/vim-cheat.git
-            git push wsdjeg_vim_chat master 
+            git remote add wsdjeg_vim_cheat https://SpaceVimBot:${BOTSECRET}@github.com/wsdjeg/vim-cheat.git
+            git push wsdjeg_vim_cheat master 
+            cd -
+            rm -rf detach/$1
+            exit 0
+            ;;
+        xmake.vim)
+            git clone https://github.com/wsdjeg/xmake.vim.git detach/$1
+            cd detach/$1
+            _checkdir plugin/
+            _detact_bundle xmake.vim plugin/xmake.vim
+            _detact_bundle xmake.vim plugin/xmgen.py
+            _checkdir autoload/
+            _detact_bundle xmake.vim autoload/xmake.vim
+            _detact_bundle xmake.vim autoload/spy.lua
+            _detact LICENSE
+            _default_readme "xmake.vim" "xmake support for neovim/vim"
+            _checkdir autoload/xmake/
+            _detact_bundle xmake.vim autoload/xmake/log.vim
+            _checkdir doc/
+            _detact_bundle xmake.vim doc/xmake.txt
+            _checkdir UltiSnips/
+            _detact_bundle xmake.vim UltiSnips/lua.snippets
+            _checkdir rplugin/python3/deoplete/sources/docs/
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/xmake.py
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/add_defines
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/add_defines                     
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/add_deps                        
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/add_files                       
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/add_headers                     
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/add_includedirs                 
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/add_linkdirs                    
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/add_links                       
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/add_subdirs                     
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/is_os                           
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/is_plat                         
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/set_basename                    
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/set_headerdir                   
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/set_kind                        
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/set_languages                   
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/set_objectdir                   
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/set_optimize                    
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/set_project                     
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/set_strip                       
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/set_symbols                     
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/set_targetdir                   
+            _detact_bundle xmake.vim rplugin/python3/deoplete/sources/docs/set_warnings 
+            git add .
+            git config user.email "wsdjeg@qq.com"
+            git config user.name  "SpaceVimBot"
+            git commit -m "Auto Update based on https://github.com/SpaceVim/SpaceVim/commit/${GITHUB_SHA}"
+            git remote add wsdjeg_xmake_vim https://SpaceVimBot:${BOTSECRET}@github.com/wsdjeg/xmake.vim.git
+            git push wsdjeg_xmake_vim master 
             cd -
             rm -rf detach/$1
             exit 0
@@ -311,6 +439,27 @@ EOT
             git commit -m "Auto Update based on https://github.com/SpaceVim/SpaceVim/commit/${GITHUB_SHA}"
             git remote add wsdjeg_scrollbar https://SpaceVimBot:${BOTSECRET}@github.com/wsdjeg/scrollbar.vim.git
             git push wsdjeg_scrollbar master 
+            cd -
+            rm -rf detach/$1
+            exit 0
+            ;;
+        github.vim)
+            git clone https://github.com/wsdjeg/GitHub.vim.git detach/$1
+            cd detach/$1
+            _checkdir plugin/
+            _checkdir autoload/
+            _detact LICENSE
+            _detact_bundle github.vim autoload/github.vim
+            _detact_bundle github.vim plugin/github.vim
+            _default_readme "GitHub.vim" "GitHub API support for neovim/vim[wip]"
+            _checkdir doc/
+            _detact_bundle github doc/github.txt
+            git add .
+            git config user.email "wsdjeg@qq.com"
+            git config user.name  "SpaceVimBot"
+            git commit -m "Auto Update based on https://github.com/SpaceVim/SpaceVim/commit/${GITHUB_SHA}"
+            git remote add wsdjeg_github_vim https://SpaceVimBot:${BOTSECRET}@github.com/wsdjeg/GitHub.vim.git
+            git push wsdjeg_github_vim master 
             cd -
             rm -rf detach/$1
             exit 0

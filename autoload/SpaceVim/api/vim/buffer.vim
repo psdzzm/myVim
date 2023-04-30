@@ -1,6 +1,6 @@
 "=============================================================================
 " buffer.vim --- SpaceVim buffer API
-" Copyright (c) 2016-2022 Wang Shidong & Contributors
+" Copyright (c) 2016-2023 Wang Shidong & Contributors
 " Author: Wang Shidong < wsdjeg@outlook.com >
 " URL: https://spacevim.org
 " License: GPLv3
@@ -248,6 +248,10 @@ lines = vim.eval("a:replacement")
 vim.buffers[bufnr][start_line:end_line] = lines
 EOF
   elseif has('python3')
+    " https://github.com/vim/vim/issues/3117
+    " https://github.com/Azure/WALinuxAgent/issues/2326
+    " https://github.com/powerline/powerline/issues/1925#issuecomment-402635097
+  silent! python3 1
 py3 << EOF
 import vim
 import string
@@ -312,7 +316,7 @@ function! s:self.add_highlight(bufnr, hl, line, col, long) abort
   if exists('*nvim_buf_add_highlight')
     call nvim_buf_add_highlight(a:bufnr, 0, a:hl, a:line, a:col, a:col + a:long)
   else
-    call SpaceVim#logger#warn('vim#buffer.add_highlight api only support neovim', 0)
+    call SpaceVim#logger#warn('vim#buffer.add_highlight api only support neovim')
   endif
 endfunction
 

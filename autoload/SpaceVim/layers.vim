@@ -1,6 +1,6 @@
 "=============================================================================
 " layers.vim --- layers public API
-" Copyright (c) 2016-2022 Wang Shidong & Contributors
+" Copyright (c) 2016-2023 Wang Shidong & Contributors
 " Author: Wang Shidong < wsdjeg@outlook.com >
 " URL: https://spacevim.org
 " License: GPLv3
@@ -86,7 +86,7 @@ function! SpaceVim#layers#load(layer, ...) abort
       call SpaceVim#logger#warn('Failed to load '
             \ . a:layer
             \ . ' layer, read :h SpaceVim-layer-' . a:layer 
-            \ . ' for more info!', 0)
+            \ . ' for more info!')
     endif
   endif
   if a:0 == 1 && type(a:1) == 4

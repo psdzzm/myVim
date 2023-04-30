@@ -1,6 +1,6 @@
 "=============================================================================
 " ui.vim --- SpaceVim ui layer
-" Copyright (c) 2016-2022 Wang Shidong & Contributors
+" Copyright (c) 2016-2023 Wang Shidong & Contributors
 " Author: Wang Shidong < wsdjeg@outlook.com >
 " URL: https://spacevim.org
 " License: GPLv3
@@ -117,6 +117,8 @@ function! SpaceVim#layers#ui#plugins() abort
 
 endfunction
 
+let s:file = expand('<sfile>:~')
+let s:funcbeginline =  expand('<slnum>') + 1
 function! SpaceVim#layers#ui#config() abort
   if g:spacevim_colorscheme_bg ==# 'dark'
     let g:indentLine_color_term = get(g:, 'indentLine_color_term', 239)
@@ -140,7 +142,7 @@ function! SpaceVim#layers#ui#config() abort
   " enable/disable indentline
   let g:indentLine_enabled = s:enable_indentline
   " this var must be boolean, but v:true is added in vim 7.4.1154
-  let g:indent_blankline_enabled = 
+  let g:indent_blankline_enabled =
         \ s:enable_indentline ?
         \ get(v:, 'true', 1)
         \ :
@@ -152,6 +154,7 @@ function! SpaceVim#layers#ui#config() abort
   let g:indent_blankline_filetype_exclude = s:indentline_exclude_filetype
         \ + ['startify', 'gitcommit', 'defx']
 
+  " option for better-whitespace
   let g:better_whitespace_filetypes_blacklist = ['diff', 'gitcommit', 'unite',
         \ 'qf', 'help', 'markdown', 'leaderGuide',
         \ 'startify'
@@ -195,8 +198,8 @@ function! SpaceVim#layers#ui#config() abort
           \ 'call SpaceVim#mapping#SmartClose()')
   endif
   " Ui toggles
-  call SpaceVim#mapping#space#def('nnoremap', ['t', '8'], 'call call('
-        \ . string(s:_function('s:toggle_fill_column')) . ', [])',
+  call SpaceVim#mapping#space#def('nnoremap', ['t', '8'],
+        \ 'call SpaceVim#layers#core#statusline#toggle_mode("hi-characters-for-long-lines")',
         \ 'highlight-long-lines', 1)
   if g:spacevim_autocomplete_method ==# 'deoplete'
     call SpaceVim#mapping#space#def('nnoremap', ['t', 'a'], 'call SpaceVim#layers#autocomplete#toggle_deoplete()',
@@ -213,8 +216,7 @@ function! SpaceVim#layers#ui#config() abort
         \ 'toggle conceallevel', 1)
   call SpaceVim#mapping#space#def('nnoremap', ['t', 't'], 'call SpaceVim#plugins#tabmanager#open()',
         \ 'open-tabs-manager', 1)
-  call SpaceVim#mapping#space#def('nnoremap', ['t', 'f'], 'call call('
-        \ . string(s:_function('s:toggle_colorcolumn')) . ', [])',
+  call SpaceVim#mapping#space#def('nnoremap', ['t', 'f'], 'call SpaceVim#layers#core#statusline#toggle_mode("fill-column-indicator")',
         \ 'fill-column-indicator', 1)
   call SpaceVim#mapping#space#def('nnoremap', ['t', 'h', 'h'], 'call call('
         \ . string(s:_function('s:toggle_cursorline')) . ', [])',
@@ -257,6 +259,35 @@ function! SpaceVim#layers#ui#config() abort
           \ 'func' : s:_function('s:toggle_spell_check'),
           \ }
           \ )
+  call SpaceVim#layers#core#statusline#register_mode(
+        \ {
+          \ 'key' : 'hi-characters-for-long-lines',
+          \ 'func' : s:_function('s:toggle_fill_column'),
+          \ }
+          \ )
+  call SpaceVim#layers#core#statusline#register_mode(
+        \ {
+          \ 'key' : 'fill-column-indicator',
+          \ 'func' : s:_function('s:toggle_colorcolumn'),
+          \ }
+          \ )
+  call SpaceVim#layers#core#statusline#register_mode(
+        \ {
+          \ 'key' : 'whitespace',
+          \ 'func' : s:_function('s:toggle_whitespace'),
+          \ }
+          \ )
+  let s:lnum = expand('<slnum>') + s:funcbeginline
+  call SpaceVim#mapping#space#def('nnoremap', ['t', 'w'],
+        \ 'call SpaceVim#layers#core#statusline#toggle_mode("whitespace")',
+        \ ['toggle-highlight-tail-spaces',
+        \ [
+          \ '[SPC t w] will toggle white space highlighting',
+          \ '',
+          \ 'Definition: ' . s:file . ':' . s:lnum,
+          \ ]
+          \ ]
+          \ , 1)
   call SpaceVim#mapping#space#def('nnoremap', ['t', 'S'],
         \ 'call SpaceVim#layers#core#statusline#toggle_mode("spell-checking")',
         \ 'toggle-spell-checker', 1)
@@ -275,12 +306,15 @@ function! SpaceVim#layers#ui#config() abort
 
   call SpaceVim#mapping#space#def('nnoremap', ['t', 'l'], 'setlocal list!',
         \ 'toggle-hidden-listchars', 1)
-  call SpaceVim#mapping#space#def('nnoremap', ['t', 'W'], 'call call('
-        \ . string(s:_function('s:toggle_wrap_line')) . ', [])',
+  call SpaceVim#layers#core#statusline#register_mode(
+        \ {
+          \ 'key' : 'wrapline',
+          \ 'func' : s:_function('s:toggle_wrap_line'),
+          \ }
+          \ )
+  call SpaceVim#mapping#space#def('nnoremap', ['t', 'W'],
+        \ 'call SpaceVim#layers#core#statusline#toggle_mode("wrapline")',
         \ 'toggle-wrap-line', 1)
-  call SpaceVim#mapping#space#def('nnoremap', ['t', 'w'], 'call call('
-        \ . string(s:_function('s:toggle_whitespace')) . ', [])',
-        \ 'toggle-highlight-tail-spaces', 1)
 
   nnoremap <silent> <F11> :call <SID>toggle_full_screen()<Cr>
   let g:_spacevim_mappings_space.z = get(g:_spacevim_mappings_space, 'z',  {'name' : '+Fonts'})
@@ -355,7 +389,7 @@ function! s:toggle_colorcolumn() abort
     set cc=
     let s:ccflag = 0
   endif
-  call SpaceVim#layers#core#statusline#toggle_mode('fill-column-indicator')
+  return 1
 endfunction
 
 let s:fcflag = 0
@@ -372,7 +406,7 @@ function! s:toggle_fill_column() abort
     set cc=
     let s:fcflag = 0
   endif
-  call SpaceVim#layers#core#statusline#toggle_mode('hi-characters-for-long-lines')
+  return 1
 endfunction
 
 function! s:toggle_indentline() abort
@@ -478,12 +512,12 @@ function! s:toggle_whitespace() abort
     let s:whitespace_enable = 1
   endif
   call SpaceVim#layers#core#statusline#toggle_section('whitespace')
-  call SpaceVim#layers#core#statusline#toggle_mode('whitespace')
+  return 1
 endfunction
 
 function! s:toggle_wrap_line() abort
-  setlocal wrap!
-  call SpaceVim#layers#core#statusline#toggle_mode('wrapline')
+  set wrap!
+  return 1
 endfunction
 
 function! s:toggle_conceallevel() abort

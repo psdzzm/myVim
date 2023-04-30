@@ -1,12 +1,17 @@
 --=============================================================================
 -- projectmanager.lua --- The lua version of projectmanager..vim
--- Copyright (c) 2016-2019 Wang Shidong & Contributors
+-- Copyright (c) 2016-2023 Wang Shidong & Contributors
 -- Author: Wang Shidong < wsdjeg@outlook.com >
 -- URL: https://spacevim.org
 -- License: GPLv3
 --=============================================================================
 
 local logger = require('spacevim.logger').derive('project')
+
+
+-- start debug mode
+logger.start_debug()
+
 local sp = require('spacevim')
 local sp_file = require('spacevim.api.file')
 local sp_json = require('spacevim.api.data.json')
@@ -366,10 +371,10 @@ function M.kill_project()
 end
 
 function M.complete_project(arglead, cmdline, cursorpos)
-  local dir = '~'
+  local dir = vim.g.spacevim_src_root or '~'
   local result = fn.split(fn.globpath(dir, '*'), '\n')
   local ps = {}
-  for p in result do
+  for _, p in pairs(result) do
     if fn.isdirectory(p) == 1 and fn.isdirectory(p .. sp_file.separator .. '.git') == 1 then
       table.insert(ps, fn.fnamemodify(p, ':t'))
     end
@@ -378,7 +383,11 @@ function M.complete_project(arglead, cmdline, cursorpos)
 end
 
 function M.OpenProject(p)
-  sp.cmd('CtrlP ' .. dir)
+  local dir = vim.g.spacevim_src_root or '~'
+  local project_root = sp_file.unify_path(dir, ':p') .. p
+  if vim.fn.isdirectory(project_root) == 1 then
+    sp.cmd('tabnew | cd ' .. project_root .. ' | Startify')
+  end
 end
 
 function M.current_root()

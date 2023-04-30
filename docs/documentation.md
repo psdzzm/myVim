@@ -101,7 +101,7 @@ description: "General documentation about how to use SpaceVim, including the qui
 
 Four core pillars: Mnemonic, Discoverable, Consistent and “Crowd-Configured”.
 
-If any of these core pillars are violated open an issue and we’ll try our best to fix it.
+If any of these core pillars are violated open an issue, and we’ll try our best to fix it.
 
 **Mnemonic**
 
@@ -245,14 +245,14 @@ The very first time SpaceVim starts up, it will ask you to
 choose a mode,
 [`basic mode`](https://github.com/SpaceVim/SpaceVim/blob/master/mode/basic.toml)
 or [`dark powered mode`](https://github.com/SpaceVim/SpaceVim/blob/master/mode/dark_powered.toml).
-then it will create a `SpaceVim.d/init.toml` in your
+Then it will create a `SpaceVim.d/init.toml` in your
 `HOME` directory. All the configuration files can be stored in the
 `~/.SpaceVim.d/` directory.
 
 `~/.SpaceVim.d/` will be added to `&runtimepath`.
 
 It is also possible to override the location of `~/.SpaceVim.d/`
-using the environment variable `SPACEVIMDIR`. Of course you can
+using the environment variable `SPACEVIMDIR`. Of course, you can
 also use symlinks to change the location of this directory.
 
 SpaceVim also supports project specific configuration files.
@@ -271,7 +271,7 @@ layer to be loaded.
 
 **Add custom plugins**
 
-If you want to add plugins from github, just add the repo name
+If you want to add plugins from GitHub, just add the repo name
 to the `custom_plugins` section:
 
 ```toml
@@ -318,7 +318,6 @@ For adding multiple custom plugins:
 
 If you want to disable plugins which are added by SpaceVim,
 you can use SpaceVim `disabled_plugins` in the `[options]` section of your configuration file.
-options:
 
 ```toml
 [options]
@@ -387,7 +386,7 @@ endfunction
 ```
 
 Similarly, if you want to add custom key bindings prefixed by language leader key,
-which is typically `,`, you can add them to the boostrap function. **Make sure** that the
+which is typically `,`, you can add them to the bootstrap function. **Make sure** that the
 key bindings are not used by SpaceVim.
 
 ```vim
@@ -411,8 +410,8 @@ The different key bindings between SpaceVim and vim are shown as below.
       windows_leader = ''
   ```
 
-- In vim the `,` key repeats the last last `f`, `F`, `t` and `T`, but in SpaceVim it is the language specific Leader key.
-  To disable this feature, set the option `enable_language_specific_leader` to `false` in in the `[options]` section of your configuration file.
+- In vim the `,` key repeats the last `f`, `F`, `t` and `T`, but in SpaceVim it is the language specific Leader key.
+  To disable this feature, set the option `enable_language_specific_leader` to `false` in the `[options]` section of your configuration file.
 
   ```toml
   [options]
@@ -464,11 +463,15 @@ introduction to writing configuration layers can be found in
 
 **Purpose**
 
-Layers help collect related packages together to provide features. For example, the `lang#python` layer provides auto-completion, syntax checking, and REPL support for python files. This approach helps keep configurations organized and reduces overhead for users by keeping them from having to think about what packages to install. To install all the `python` features users only need to add the `lang#python` layer to their custom configuration file.
+Layers help collect related packages together to provide features. For example, the `lang#python` layer provides auto-completion,
+syntax checking, and REPL support for python files.
+This approach helps keep configurations organized and reduces overhead for users by keeping them from having to think about what packages to install.
+To install all the `python` features users only need to add the `lang#python` layer to their custom configuration file.
 
 **Structure**
 
-In SpaceVim, a layer is a single file. In a layer, for example, `autocomplete` layer, the file is `autoload/SpaceVim/layers/autocomplete.vim`, and there are three public functions:
+In SpaceVim, a layer is a single file. In a layer, for example, `autocomplete` layer, the file is `autoload/SpaceVim/layers/autocomplete.vim`,
+and there are three public functions:
 
 - `SpaceVim#layers#autocomplete#plugins()`: returns a list of the plugins used by this plugin
 - `SpaceVim#layers#autocomplete#config()`: The layer's configuration, such as key bindings and autocmds
@@ -636,7 +639,7 @@ The `core#statusline` layer provides a heavily customized powerline with the fol
 - show the index of search results
 - toggle syntax checking info
 - toggle battery info
-- toggle minor mode lighters
+- toggle major mode lighters
 - show VCS information (branch, hunk summary) (requires `git` and `VersionControl` layers)
 
 | Key Bindings | Descriptions                                 |
@@ -661,8 +664,8 @@ Some elements can be dynamically toggled:
 | `SPC t m b`  | toggle the battery status (need to install acpi)                    |
 | `SPC t m c`  | toggle the org task clock (available in org layer)(TODO)            |
 | `SPC t m i`  | toggle the input method                                             |
-| `SPC t m m`  | toggle the minor mode lighters                                      |
-| `SPC t m M`  | toggle the major mode                                               |
+| `SPC t m m`  | toggle the major mode lighters                                      |
+| `SPC t m M`  | toggle the filetype section                                         |
 | `SPC t m n`  | toggle the cat! (If colors layer is declared in your dotfile)(TODO) |
 | `SPC t m p`  | toggle the cursor position                                          |
 | `SPC t m t`  | toggle the time                                                     |
@@ -676,7 +679,7 @@ By default SpaceVim uses nerd-fonts, which can be downloaded from their [website
 
 **syntax checking integration:**
 
-When syntax checking minor mode is enabled, a new element appears showing the number of errors and warnings.
+When syntax checking major mode is enabled, a new element appears showing the number of errors and warnings.
 
 **Search index integration:**
 
@@ -726,9 +729,9 @@ Here is an exhaustive set of screenshots for all the available separators:
 | `nil`     | ![separator-nil](https://cloud.githubusercontent.com/assets/13142418/26249776/645a5a96-3cda-11e7-9655-0aa1f76714f4.png)   |
 | `fire`    | ![separator-fire](https://cloud.githubusercontent.com/assets/13142418/26274142/434cdd10-3d75-11e7-811b-e44cebfdca58.png)  |
 
-**Minor Modes:**
+**major modes:**
 
-The minor mode area can be toggled on and off with `SPC t m m`.
+The major mode area can be toggled on and off with `SPC t m m`.
 
 Unicode symbols are displayed by default. Add `statusline_unicode = false` to your custom configuration file to use ASCII characters instead (may be useful in the terminal if you cannot set an appropriate font).
 
@@ -742,6 +745,15 @@ The letters displayed in the statusline correspond to the key bindings used to t
 | `SPC t S`    | Ⓢ       | S     | enabled in spell checking                       |
 | `SPC t w`    | ⓦ       | w     | whitespace mode (highlight trailing whitespace) |
 | `SPC t W`    | Ⓦ       | W     | wrap line mode                                  |
+
+The status of major mode will be cached, the cache will be loaded when spacevim startup.
+If you want to disable major mode cache, you need to charge the layer option of `core#statusline` layer.
+
+```toml
+[[layers]]
+  name = 'core#statusline'
+  major_mode_cache = false
+```
 
 **colorscheme of statusline:**
 
@@ -1256,7 +1268,7 @@ Read `:h registers` for more info about other registers.
 | `<Leader> P` | Paste text from system clipboard before here |
 | `<Leader> Y` | Copy selected text to pastebin               |
 
-To change the command of clipboard, you nned to use bootstrap after function:
+To change the command of clipboard, you need to use bootstrap after function:
 
 ```viml
 " for example, to use tmux clipboard:
@@ -2549,5 +2561,3 @@ export PATH=$PATH:$HOME/.SpaceVim/bin
 Use `svc` to open a file in the existing Vim server, or use `nsvc` to open a file in the existing Neovim server.
 
 ![server-and-client](https://user-images.githubusercontent.com/13142418/32554968-7164fe9c-c4d6-11e7-95f7-f6a6ea75e05b.gif)
-
-<!-- vim:set nowrap: -->

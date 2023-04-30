@@ -1,6 +1,6 @@
 "=============================================================================
 " guide.vim --- key binding guide for SpaceVim
-" Copyright (c) 2016-2022 Wang Shidong & Contributors
+" Copyright (c) 2016-2023 Wang Shidong & Contributors
 " Author: Wang Shidong < wsdjeg@outlook.com >
 " URL: https://spacevim.org
 " License: GPLv3
@@ -606,10 +606,10 @@ if s:SL.support_float()
           \ [s:guide_help_msg(0), 'LeaderGuiderFill'],
           \ [repeat(' ', 999), 'LeaderGuiderFill'],
           \ ])
-    call SpaceVim#logger#info('key binding guide float statusline winid:' . winid)
+    call SpaceVim#logger#debug('key binding guide float statusline winid:' . winid)
   endfunction
   function! s:close_float_statusline() abort
-    call SpaceVim#logger#info('close float statusline winid:' . s:SL.__winid)
+    call SpaceVim#logger#debug('close float statusline winid:' . s:SL.__winid)
     call s:SL.close_float()
   endfunction
 else

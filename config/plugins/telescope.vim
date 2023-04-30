@@ -4,11 +4,17 @@ lua require('telescope').load_extension('project')
 lua require('telescope').load_extension('scriptnames')
 lua require('telescope').load_extension('neoyank')
 lua require('telescope').load_extension('task')
-lua require('telescope').load_extension('zettelkasten_template')
+if SpaceVim#layers#isLoaded('zettelkasten')
+  lua require('telescope').load_extension('zettelkasten_template')
+endif
 if filereadable(g:_spacevim_root_dir . 'bundle/telescope-fzf-native.nvim/build/libfzf.so')
       \ || filereadable(g:_spacevim_root_dir . 'bundle/telescope-fzf-native.nvim/build/libfzf.dll')
   lua require('telescope').load_extension('fzf')
 endif
+if g:spacevim_snippet_engine ==# 'ultisnips'
+  lua require('telescope').load_extension('ultisnips')
+endif
+
 lua <<EOF
 local actions = require("telescope.actions")
 require("telescope").setup{

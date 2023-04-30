@@ -1,4 +1,5 @@
 !0/
+.spacevim.log
 doc/tags
 doc/tags-cn
 .ropeproject/
@@ -42,3 +43,4 @@ view/
 .vim-bookmarks
 # ignore cache
 .cache/
+.xmake/
