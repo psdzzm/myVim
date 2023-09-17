@@ -10,6 +10,45 @@ let s:save_cpo = &cpo
 set cpo&vim
 scriptencoding utf-8
 
+""
+" @section alternate, plugins-alternate
+" @parentsection plugins
+" To manage the alternate file of the project, you need to create a `.project_alt.json` file
+" in the root of your project. Then you can use the command `:A` to jump to the alternate file of
+" current file. You can also specific the type of alternate file, for example `:A doc`.
+" With a bang `:A!`, SpaceVim will parse the configuration file additionally. If no type is specified,
+" the default type `alternate` will be used.
+" 
+" here is an example of `.project_alt.json`:
+" 
+" >
+"   {
+"     "autoload/SpaceVim/layers/lang/*.vim": {
+"       "doc": "docs/layers/lang/{}.md",
+"       "test": "test/layer/lang/{}.vader"
+"     }
+"   }
+" <
+" 
+" instead of using `.project_alt.json`, `b:alternate_file_config`
+" can be used in bootstrap function, for example:
+" 
+" >
+"   augroup myspacevim
+"       autocmd!
+"       autocmd BufNewFile,BufEnter *.c let b:alternate_file_config = {
+"             \ "src/*.c" : {
+"                 \ "doc" : "docs/{}.md",
+"                 \ "alternate" : "include/{}.h",
+"                 \ }
+"             \ }
+"       autocmd BufNewFile,BufEnter *.h let b:alternate_file_config = {
+"             \ "include/*.h" : {
+"                 \ "alternate" : "scr/{}.c",
+"                 \ }
+"             \ }
+"   augroup END
+" <
 
 if has('nvim-0.5.0')
   function! SpaceVim#plugins#a#alt(request_parse, ...) abort
@@ -47,7 +86,8 @@ else
   let s:CMP = SpaceVim#api#import('vim#compatible')
   let s:JSON = SpaceVim#api#import('data#json')
   let s:FILE = SpaceVim#api#import('file')
-  let s:LOGGER =SpaceVim#logger#derive('a.vim')
+  let s:LOGGER = SpaceVim#logger#derive('a.vim')
+  let s:TOML = SpaceVim#api#import('data#toml')
 
 
   " local value
@@ -83,8 +123,12 @@ else
   " the project_config info is cleared.
   function! s:get_project_config(conf_file) abort
     call s:LOGGER.info('read context from: '. a:conf_file)
-    let context = join(readfile(a:conf_file), "\n")
-    let conf = s:JSON.json_decode(context)
+    if a:conf_file =~# 'toml$'
+      let conf = s:TOML.parse_file(a:conf_file)
+    else
+      let context = join(readfile(a:conf_file), "\n")
+      let conf = s:JSON.json_decode(context)
+    endif
     if type(conf) !=# type({})
       " in Old vim we get E706
       " Variable type mismatch for conf, so we need to unlet conf first

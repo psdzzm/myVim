@@ -142,11 +142,11 @@ lang: zh
 
 **欢迎页面**
 
-![welcome-page](https://user-images.githubusercontent.com/13142418/68079142-904e4280-fe1f-11e9-993e-b834ea3d39ea.png)
+![welcome-page](https://img.spacevim.org/68079142-904e4280-fe1f-11e9-993e-b834ea3d39ea.png)
 
 **工作界面**
 
-![work-flow](https://cloud.githubusercontent.com/assets/296716/25455341/6af0b728-2a9d-11e7-9721-d2a694dde1a8.png)
+![work-flow](https://img.spacevim.org/6af0b728-2a9d-11e7-9721-d2a694dde1a8.png)
 
 Neovim 运行在 iTerm2 上，采用 SpaceVim，配色为：_base16-solarized-dark_
 
@@ -165,7 +165,7 @@ SpaceVim 根据需要定义了很多临时快捷键，
 
 文本移动临时快捷键：
 
-![Move Text Transient State](https://user-images.githubusercontent.com/13142418/28489559-4fbc1930-6ef8-11e7-9d5a-716fe8dbb881.png)
+![Move Text Transient State](https://img.spacevim.org/28489559-4fbc1930-6ef8-11e7-9d5a-716fe8dbb881.png)
 
 ## 适用人群
 
@@ -642,7 +642,7 @@ SpaceVim 默认使用 `nerd fonts`，可参阅其安装指南进行安装。
 
 当使用 `/` 或 `?` 进行搜索时，或当按下 `n` 或 `N` 后，搜索结果序号将被展示在状态栏中，使用类似于 `20/22` 这样的分数显示搜索结果的当前序号以及结果总数。具体的效果图如下：
 
-![search status](https://cloud.githubusercontent.com/assets/13142418/26313080/578cc68c-3f3c-11e7-9259-a27419d49572.png)
+![search status](https://img.spacevim.org/578cc68c-3f3c-11e7-9259-a27419d49572.png)
 
 搜索结果展示由`incsearch`模块提供，可以在配置中启用该模块：
 
@@ -677,11 +677,11 @@ SpaceVim 所支持的分割符以及截图如下：
 
 | 分割符  | 截图                                                                                                                      |
 | ------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `arrow` | ![separator-arrow](https://cloud.githubusercontent.com/assets/13142418/26234639/b28bdc04-3c98-11e7-937e-641c9d85c493.png) |
-| `curve` | ![separator-curve](https://cloud.githubusercontent.com/assets/13142418/26248272/42bbf6e8-3cd4-11e7-8792-665447040f49.png) |
-| `slant` | ![separator-slant](https://cloud.githubusercontent.com/assets/13142418/26248515/53a65ea2-3cd5-11e7-8758-d079c5a9c2d6.png) |
-| `nil`   | ![separator-nil](https://cloud.githubusercontent.com/assets/13142418/26249776/645a5a96-3cda-11e7-9655-0aa1f76714f4.png)   |
-| `fire`  | ![separator-fire](https://cloud.githubusercontent.com/assets/13142418/26274142/434cdd10-3d75-11e7-811b-e44cebfdca58.png)  |
+| `arrow` | ![separator-arrow](https://img.spacevim.org/b28bdc04-3c98-11e7-937e-641c9d85c493.png) |
+| `curve` | ![separator-curve](https://img.spacevim.org/42bbf6e8-3cd4-11e7-8792-665447040f49.png) |
+| `slant` | ![separator-slant](https://img.spacevim.org/53a65ea2-3cd5-11e7-8758-d079c5a9c2d6.png) |
+| `nil`   | ![separator-nil](https://img.spacevim.org/645a5a96-3cda-11e7-9655-0aa1f76714f4.png)   |
+| `fire`  | ![separator-fire](https://img.spacevim.org/434cdd10-3d75-11e7-811b-e44cebfdca58.png)  |
 
 **SpaceVim 功能模块：**
 
@@ -839,7 +839,7 @@ SpaceVim 的文件树提供了版本控制信息的接口，但是这一特性�
 会使得文件树插件比较慢，因此默认没有打开，如果需要使用这一特性，
 可向配置文件中加入 `enable_filetree_gitstatus = true`，启用后的截图如下：
 
-![file-tree](https://user-images.githubusercontent.com/13142418/80496111-5065b380-899b-11ea-95c7-02af4d304aaf.png)
+![file-tree](https://img.spacevim.org/80496111-5065b380-899b-11ea-95c7-02af4d304aaf.png)
 
 默认情况下文件树是打开的，如果需要设置文件树默认关闭，需要修改 `enable_vimfiler_welcome` 选项。
 
@@ -1000,7 +1000,7 @@ endfunction
 
 例如，Normal 模式下按下空格键，你将会看到：
 
-![mapping-guide](https://cloud.githubusercontent.com/assets/13142418/25778673/ae8c3168-3337-11e7-8536-ee78d59e5a9c.png)
+![mapping-guide](https://img.spacevim.org/ae8c3168-3337-11e7-8536-ee78d59e5a9c.png)
 
 这一导航窗口将提示所有以空格键为前缀的快捷键，并且根据功能将这些快捷键进行了分组，例如 buffer 相关的快捷键都是 `b`，工程相关的快捷键都是 `p`。在代码导航窗口内，按下 `Ctrl-h` 键，可以获取一些帮助信息，这些信息将被显示在状态栏上，提示的是一些翻页和撤销按键的快捷键。
 
@@ -1024,7 +1024,7 @@ call SpaceVim#custom#SPC('nnoremap', ['f', 't'], 'echom "hello world"', 'test cu
 
 可以通过 `SPC ?` 将当前快捷键罗列出来。然后可以输入快捷键按键字母或者描述，可以模糊匹配并展示结果。
 
-![unite-mapping](https://cloud.githubusercontent.com/assets/13142418/25779196/2f370b0a-3345-11e7-977c-a2377d23286e.png)
+![unite-mapping](https://img.spacevim.org/2f370b0a-3345-11e7-977c-a2377d23286e.png)
 
 使用 `<Tab>` 键或者上下方向键选择你需要的快捷键，回车将执行这一快捷键。
 
@@ -1443,7 +1443,7 @@ SpaceVim 选项 `window_leader` 的值来设为其它按键：
 按下 `SPC f /` 快捷键之后，会弹出搜索输入窗口，输入内容后回车，异步执行 `find` 或者 `fd` 命令，
 默认使用的是 `find` 命令，可以使用快捷键 `ctrl-e` 在不同工具之间切换。
 
-![find](https://user-images.githubusercontent.com/13142418/97999590-79717000-1e26-11eb-91b1-458ab30d6254.gif)
+![find](https://img.spacevim.org/97999590-79717000-1e26-11eb-91b1-458ab30d6254.gif)
 
 #### Vim 和 SpaceVim 相关文件
 
@@ -2105,7 +2105,7 @@ endfunction
 | `SPC p t r` | 选定任务并执行   |
 | `SPC p t l` | 列出所有任务     |
 
-![task_manager](https://user-images.githubusercontent.com/13142418/94822603-69d0c700-0435-11eb-95a7-b0b4fef91be5.png)
+![task_manager](https://img.spacevim.org/94822603-69d0c700-0435-11eb-95a7-b0b4fef91be5.png)
 
 #### 自定义任务
 
@@ -2117,7 +2117,7 @@ endfunction
     args = ['hello world']
 ```
 
-![task hello world](https://user-images.githubusercontent.com/13142418/74582981-74049900-4ffd-11ea-9b38-7858042225b9.png)
+![task hello world](https://img.spacevim.org/74582981-74049900-4ffd-11ea-9b38-7858042225b9.png)
 
 对于不需要打印输出结果，后台运行的任务，可以设置 `isBackground` 为 `true`:
 
@@ -2174,7 +2174,7 @@ SpaceVim 目前支持自动识别以下构建系统的任务：npm。
 比如，克隆示例项目 [eslint-starter](https://github.com/spicydonuts/eslint-starter)，
 编辑其中的任意文件，然后按下快捷键`SPC p t r`，将会显示如下任务列表：
 
-![task-auto-detection](https://user-images.githubusercontent.com/13142418/75089003-471d2c80-558f-11ea-8aea-cbf7417191d9.png)
+![task-auto-detection](https://img.spacevim.org/75089003-471d2c80-558f-11ea-8aea-cbf7417191d9.png)
 
 #### 任务提供源
 
@@ -2213,7 +2213,7 @@ call SpaceVim#plugins#tasks#reg_provider(funcref('s:make_tasks'))
 
 将以上内容加入启动函数，在 SpceVim 仓库内按下 `SPC p t r` 快捷键，将会展示如下任务：
 
-![task-make](https://user-images.githubusercontent.com/13142418/75105016-084cac80-564b-11ea-9fe6-75d86a0dbb9b.png)
+![task-make](https://img.spacevim.org/75105016-084cac80-564b-11ea-9fe6-75d86a0dbb9b.png)
 
 ### 代办事项管理器
 
@@ -2229,7 +2229,7 @@ call SpaceVim#plugins#tasks#reg_provider(funcref('s:make_tasks'))
    todo_prefix = '@'
 ```
 
-![todo manager](https://user-images.githubusercontent.com/13142418/61462920-0bd9d000-a9a6-11e9-8e1f-c70d6ec6ca1e.png)
+![todo manager](https://img.spacevim.org/61462920-0bd9d000-a9a6-11e9-8e1f-c70d6ec6ca1e.png)
 
 ### Iedit 多光标编辑
 
@@ -2408,6 +2408,6 @@ export PATH=$PATH:$HOME/.SpaceVim/bin
 
 使用命令 `svc` 在一个已存在的 Vim 服务器上打开文件，使用命令 `nsvc` 在一个已存在的 Neovim 服务器上打开文件。
 
-![server-and-client](https://user-images.githubusercontent.com/13142418/32554968-7164fe9c-c4d6-11e7-95f7-f6a6ea75e05b.gif)
+![server-and-client](https://img.spacevim.org/32554968-7164fe9c-c4d6-11e7-95f7-f6a6ea75e05b.gif)
 
 <!-- vim:set nowrap cole=0: -->

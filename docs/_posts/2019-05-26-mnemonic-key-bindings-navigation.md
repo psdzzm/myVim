@@ -2,7 +2,7 @@
 title: "快捷键助记导航"
 categories: [blog_cn, feature_cn]
 description: "快捷键助记导航会根据已输入的按键，自动智能提示下一个按键以及其功能。"
-image: https://user-images.githubusercontent.com/13142418/89091735-5de96a00-d3de-11ea-85e1-b0fc64537836.gif
+image: https://img.spacevim.org/89091735-5de96a00-d3de-11ea-85e1-b0fc64537836.gif
 permalink: /cn/:title/
 lang: zh
 type: article
@@ -30,11 +30,11 @@ commentsID: "快捷键助记导航"
 - vim: `8.1.1364`
 - neovim: `v0.4.2`
 
-![float_guide](https://user-images.githubusercontent.com/13142418/89091735-5de96a00-d3de-11ea-85e1-b0fc64537836.gif)
+![float_guide](https://img.spacevim.org/89091735-5de96a00-d3de-11ea-85e1-b0fc64537836.gif)
 
 若使用的是低版本的 Vim 或者 Neovim，则使用分割窗口打开：
 
-![mapping guide](https://user-images.githubusercontent.com/13142418/35568184-9a318082-058d-11e8-9d88-e0eafd1d498d.gif)
+![mapping guide](https://img.spacevim.org/35568184-9a318082-058d-11e8-9d88-e0eafd1d498d.gif)
 
 ## 默认快捷键前缀
 
@@ -48,7 +48,7 @@ commentsID: "快捷键助记导航"
 
 例如，在 Normal 模式下，按下空格键，将可以看到：
 
-![mapping-guide](https://cloud.githubusercontent.com/assets/13142418/25778673/ae8c3168-3337-11e7-8536-ee78d59e5a9c.png)
+![mapping-guide](https://img.spacevim.org/ae8c3168-3337-11e7-8536-ee78d59e5a9c.png)
 
 这一导航中，所有快捷键均已`[SPC]`为前缀，可以按下按键`b`查看 buffer 相关的快捷键，或者`p`查看 project 相关的快捷键。
 
