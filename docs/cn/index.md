@@ -4,10 +4,8 @@ description: "SpaceVim 是一个社区驱动的模块化的 Vim IDE，以模块�
 lang: zh
 ---
 
-[![build](https://img.shields.io/github/actions/workflow/status/SpaceVim/SpaceVim/check.yml?branch=master)](https://github.com/SpaceVim/SpaceVim/actions/workflows/check.yml?query=branch%3Amaster)
-[![Codecov coverage](https://img.shields.io/codecov/c/github/SpaceVim/SpaceVim.svg)](https://codecov.io/gh/SpaceVim/SpaceVim)
 [![Release](https://img.shields.io/badge/Release-2.2.0-8700FF.svg)](https://spacevim.org/SpaceVim-release-v2.2.0/)
-[![GPLv3 License](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://github.com/SpaceVim/SpaceVim/blob/master/LICENSE)
+[![GPLv3 License](https://img.shields.io/badge/license-GPLv3-blue.svg)](development/#证书)
 
 ![welcome page](https://img.spacevim.org/228742293-1ca7c173-84a6-461a-9fb5-656d23953e12.png)
 
@@ -39,18 +37,11 @@ SpaceVim 是一个社区驱动的模块化的 Vim IDE，以模块的方式组织
 
 或者可以关注我们的推特：[@SpaceVim](https://twitter.com/SpaceVim)。
 
-## 参与
-
-常规的项目讨论和问答主要是使用 [Matrix 聊天室](https://app.element.io/#/room/#spacevim-cn:matrix.org)，
-而提交问题和贡献代码主要是在 [Github](https://github.com/SpaceVim/SpaceVim) 上，
-同时，SpaceVim 开通了[码云仓库](https://gitee.com/spacevim/SpaceVim)，主要用于中文交流。
-
 ## 常见问题
 
 - 目前 SpaceVim 的开发状态如何？
 
-  当前最新发布的稳定版本是 v1.9.0。可以查看 [时间表](https://github.com/SpaceVim/SpaceVim/milestones) 获取开发进度，
-  或者阅读 [Roadmap](roadmap/) 获取开发计划。
+  当前最新发布的稳定版本是 v2.3.0。可以查看[Roadmap](roadmap/)获取开发计划。
 
 - SpaceVim 是尝试搭建一个 IDE 吗？
 
